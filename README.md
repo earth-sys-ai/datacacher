@@ -10,10 +10,15 @@ It takes a flag, an input file, an output file, and a resolution.
 Ex:
 `> python3 genCache.py -e data.nc data100.json 100`
 
-If you wish to preview the data before caching yoy may use the `-p` flag instead.
+If you wish to preview the data before caching you can use the `-p` flag instead.
 
 Ex:
 `> python3 genCache.py -p data.nc data100.json 100`
+
+If you wish to preview the data after being cache you can use the viewCache.py script.
+
+Ex:
+`> python3 viewCache.py data100.json`
 
 The cacheData.sh script can be used to automatically generate cache files for multiple levels to use with the server in a given directory
 
