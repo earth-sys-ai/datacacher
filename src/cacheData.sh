@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # levels to cache
-levels=(5 10 25 50 100)
+levels=(5 10 25 50 100 500 1000)
 
 # cli arguements
 dataFile=$1
