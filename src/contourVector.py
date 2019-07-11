@@ -21,21 +21,23 @@ def prompt(query):
     return ret
 
 # returns an array of polygons and values
-def genPoly(cs, levels):
+def genPoly(cs, levels, thres):
     print("Generating polygons...")
     outp = []
     for i, collection in enumerate(cs.collections):
-        poly = []
-        for path in collection.get_paths():
-            verts = path.to_polygons(closed_only=True)
-            for v in verts:
-                poly.append(v)
-        if (len(poly) > 0):
-            outp.append([levels[i], poly])
+        if (abs(levels[i]) > thres):
+            poly = []
+            for path in collection.get_paths():
+                path.should_simplify = False
+                verts = path.to_polygons(closed_only=True)
+                for v in verts:
+                    poly.append(v)
+            if (len(poly) > 0):
+                outp.append([levels[i], poly])
     return outp
 
 # takes raster points and generates a vector contour
-def vectorize(lat, lon, elems, data, res, prev):
+def vectorize(lat, lon, elems, data, res, prev, thres):
     print("Distributing levels...")
     MinVal = np.min(data) 
     MaxVal = np.max(data)
@@ -50,4 +52,4 @@ def vectorize(lat, lon, elems, data, res, prev):
         if not prompt("Would you like to write this data?"):
             exit()
             
-    return genPoly(contour, levels)
+    return genPoly(contour, levels, thres)
