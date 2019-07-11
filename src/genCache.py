@@ -11,7 +11,7 @@ def getData(cdf, res, prev):
     lon = cdf["x"][:]
     elems = cdf['element'][:,:]-1
     data = cdf['zeta_max'][:]
-    return vectorize(lat, lon, elems, data, res, prev, int(sys.argv[5]));
+    return vectorize(lat, lon, elems, data, res, prev, float(sys.argv[5]));
 
 # convert ndarray structure to json string
 def arrToJson(data, min, max):
