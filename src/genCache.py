@@ -29,7 +29,9 @@ def arrToJson(data, min, max):
                 # polygons
                 for n in i[1]:
                         vertices = []
-
+                        minV = [n[0][0], n[0][1]]
+                        maxV = [n[0][0], n[0][1]]                        
+                        
                         # vertices
                         for v in n:
                                 vertices.append({
@@ -37,9 +39,21 @@ def arrToJson(data, min, max):
                                         "lng": v[1]
                                 })
 
+                                # max and min
+                                if v[0] < minV[0]:
+                                        minV[0] = v[0]
+                                if v[1] < minV[1]:
+                                       minV[1] = v[1]
+                                if v[0] > maxV[0]:
+                                        maxV[0] = v[0]
+                                if v[1] > maxV[1]:
+                                        maxV[1] = v[1]
+
                         curVertLen = len(n)
                         polygons.append({
                                 "vertCount": curVertLen,
+                                "minV": minV, 
+                                "maxV": maxV, 
                                 "vertices": vertices
                         })
                         vertLen += curVertLen

@@ -56,8 +56,10 @@ levels: array                           // levels containing values and polygons
         - value: float                  // value of current level
         - polyCount: int                // number of polygons in the current level
         - polygons: array               // polygon array
-            - polygons[X]               // any level
+            - polygons[X]               // any polygon
                 - vertCount: int        // number of vertices in the the current polygon
+                - minV: [float, float]  // maximum x and y values for any vertex
+                - maxV: [float, float]  // minimum x and y values for any vertex
                 - vertices: array       // vertex array
                     - vertices[X]       // any vertex
                         - lat: float    // latitude as float
