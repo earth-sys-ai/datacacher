@@ -43,7 +43,7 @@ def vectorize(lat, lon, elems, data, res, prev, thres):
     MaxVal = np.max(data)
     levels = np.linspace(MinVal, MaxVal, num=str(int(res) + 1))
     print("Contouring data...")
-    triangles = tri.Triangulation(lon,lat, triangles=elems)
+    triangles = tri.Triangulation(lon, lat, triangles=elems)
     contour = plt.tricontourf(triangles, data, levels=levels, extend='max')
     
     # preview and confirm
